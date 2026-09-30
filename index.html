@@ -12,46 +12,223 @@ section{padding:16px 0 8px}
 h2{margin:0 24px 10px;font-size:1rem;font-weight:500}
 h2 span{color:var(--mut);font-size:.85rem;margin-left:6px}
 .row{display:flex;gap:12px;overflow-x:auto;padding:0 24px 12px;scroll-snap-type:x proximity}
-.item{flex:0 0 auto;height:260px;scroll-snap-align:start;border-radius:8px;overflow:hidden;background:#8882}
+.item{position:relative;flex:0 0 auto;height:260px;scroll-snap-align:start;border-radius:8px;overflow:hidden;background:#8882}
 .item img,.item video{height:100%;width:auto;display:block;cursor:zoom-in}
 .item video{cursor:auto;max-width:80vw}
-#lb{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:9;cursor:zoom-out}
-#lb img{max-width:96vw;max-height:96vh}
+.item.pdf{min-width:190px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.item.pdf canvas{height:100%;width:auto;display:block}
+.item.pdf .lbl{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 8px;background:linear-gradient(transparent,#000a);color:#fff;font-size:.78rem;display:flex;gap:8px;align-items:baseline}
+.item.pdf .lbl b{background:#e5484d;border-radius:4px;padding:1px 6px;font-size:.7rem}
+.item.pdf .lbl span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exp{position:absolute;top:8px;right:8px;z-index:2;border:0;border-radius:6px;background:#000a;color:#fff;font-size:1rem;padding:4px 8px;cursor:pointer}
+
+/* lightbox */
+#lb{position:fixed;inset:0;background:#000e;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:9;padding:16px;gap:14px}
+#stage{position:relative;line-height:0;max-width:96vw}
+#main{display:block;max-width:96vw;max-height:92vh;object-fit:contain}
+#lb.hascap #main,#lb.hascap #mv{max-height:66vh}
+#mv{display:none;max-width:96vw;max-height:92vh;background:#000}
+#ref{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;opacity:0;pointer-events:none;transition:opacity 2s ease}
+#cap{display:none;color:#eee;max-width:min(860px,94vw);max-height:22vh;overflow:auto;font-size:1rem;line-height:1.55;white-space:pre-wrap;text-align:center}
+#lb.hascap #cap{display:block}
+#x{position:absolute;top:12px;right:14px;z-index:3;border:0;background:#fff2;color:#fff;border-radius:50%;width:38px;height:38px;font-size:1.3rem;cursor:pointer}
+
+/* pdf viewer */
+#pv{position:fixed;inset:0;display:none;flex-direction:column;background:var(--bg);z-index:10}
+#pvbar{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #8883;font-size:.9rem}
+#pvbar .t{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+#pvbar a{color:inherit;opacity:.7;font-size:.85rem}
+#pvbar button{border:0;background:#8883;color:inherit;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:.9rem}
+#pvnote{flex:0 0 auto;padding:8px 16px;font-size:.9rem;white-space:pre-wrap;border-bottom:1px solid #8883;display:none;max-height:20vh;overflow:auto}
+#pvbody{flex:1 1 auto;overflow:auto;-webkit-overflow-scrolling:touch;padding:8px;background:#8881;text-align:center}
+#pvbody canvas{display:block;margin:0 auto 10px;background:#fff;box-shadow:0 1px 6px #0004}
+#pvbody iframe{width:100%;height:100%;border:0}
+#pvmsg{padding:30px;color:var(--mut)}
 </style></head><body>
 <header>Senthil Velan Gallery</header>
-<section><h2>AI + Design <span>3</span></h2><div class="row">
-<div class="item"><img src="AI%20%2B%20Design/Gemini_Generated_Image_4kwkth4kwkth4kwk.png" loading="lazy" alt="Gemini_Generated_Image_4kwkth4kwkth4kwk.png"></div>
-<div class="item"><img src="AI%20%2B%20Design/Gemini_Generated_Image_85bh8985bh8985bh.png" loading="lazy" alt="Gemini_Generated_Image_85bh8985bh8985bh.png"></div>
-<div class="item"><img src="AI%20%2B%20Design/Gemini_Generated_Image_d2h68xd2h68xdh6.png" loading="lazy" alt="Gemini_Generated_Image_d2h68xd2h68xdh6.png"></div>
+<section><h2>AI + Design <span>5</span></h2><div class="row">
+<div class="item vid"><video src="AI%20%2B%20Design/01.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item pdf" data-i="1" data-src="AI%20%2B%20Design/Film%20Facilitation%20Centre%20Design%20Sheets.pdf" tabindex="0"><canvas></canvas><div class="lbl"><b>PDF</b><span>Film Facilitation Centre Design Sheets.pdf</span></div></div>
+<div class="item" data-i="2"><img src="AI%20%2B%20Design/Gemini_Generated_Image_4kwkth4kwkth4kwk.png" loading="lazy" alt="Gemini_Generated_Image_4kwkth4kwkth4kwk.png"></div>
+<div class="item" data-i="3"><img src="AI%20%2B%20Design/Gemini_Generated_Image_85bh8985bh8985bh.png" loading="lazy" alt="Gemini_Generated_Image_85bh8985bh8985bh.png"></div>
+<div class="item" data-i="4"><img src="AI%20%2B%20Design/Scio.png" loading="lazy" alt="Scio.png"></div>
 </div></section>
 <section><h2>Images <span>11</span></h2><div class="row">
-<div class="item"><img src="Images/2.png" loading="lazy" alt="2.png"></div>
-<div class="item"><img src="Images/6.png" loading="lazy" alt="6.png"></div>
-<div class="item"><img src="Images/corrected%20intach%20poster%2016%20%3B%2044.jpg" loading="lazy" alt="corrected intach poster 16 ; 44.jpg"></div>
-<div class="item"><img src="Images/dAaY%2004.png" loading="lazy" alt="dAaY 04.png"></div>
-<div class="item"><img src="Images/Day%2004.png" loading="lazy" alt="Day 04.png"></div>
-<div class="item"><img src="Images/Page%205.1%20(3).jpg" loading="lazy" alt="Page 5.1 (3).jpg"></div>
-<div class="item"><video src="Images/Pallavan%20Post%20001.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><img src="Images/PG%204.png" loading="lazy" alt="PG 4.png"></div>
-<div class="item"><img src="Images/PG%205.png" loading="lazy" alt="PG 5.png"></div>
-<div class="item"><video src="Images/QR%20Post.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><img src="Images/streak%20street.jpg" loading="lazy" alt="streak street.jpg"></div>
+<div class="item" data-i="5"><img src="Images/2.png" loading="lazy" alt="2.png"></div>
+<div class="item" data-i="6"><img src="Images/6.png" loading="lazy" alt="6.png"></div>
+<div class="item" data-i="7"><img src="Images/corrected%20intach%20poster%2016%20%3B%2044.jpg" loading="lazy" alt="corrected intach poster 16 ; 44.jpg"></div>
+<div class="item" data-i="8"><img src="Images/dAaY%2004.png" loading="lazy" alt="dAaY 04.png"></div>
+<div class="item" data-i="9"><img src="Images/Day%2004.png" loading="lazy" alt="Day 04.png"></div>
+<div class="item" data-i="10"><img src="Images/Page%205.1%20(3).jpg" loading="lazy" alt="Page 5.1 (3).jpg"></div>
+<div class="item vid"><video src="Images/Pallavan%20Post%20001.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item" data-i="12"><img src="Images/PG%204.png" loading="lazy" alt="PG 4.png"></div>
+<div class="item" data-i="13"><img src="Images/PG%205.png" loading="lazy" alt="PG 5.png"></div>
+<div class="item vid"><video src="Images/QR%20Post.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item" data-i="15"><img src="Images/streak%20street.jpg" loading="lazy" alt="streak street.jpg"></div>
 </div></section>
 <section><h2>Videos <span>8</span></h2><div class="row">
-<div class="item"><video src="Videos/2D%20Animation%20Promo.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><video src="Videos/Anamorphic%20Single%20Screen.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><video src="Videos/Chemical%20Guys%20Task%203%20v1.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><video src="Videos/dAY%2009.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><video src="Videos/Day%2029.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><video src="Videos/Low%20Quality%20Reel%20v3.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><video src="Videos/Test%20Task%201%20v6.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item"><video src="Videos/Video.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item vid"><video src="Videos/2D%20Animation%20Promo.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item vid"><video src="Videos/Anamorphic%20Single%20Screen.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item vid"><video src="Videos/Chemical%20Guys%20Task%203%20v1.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item vid"><video src="Videos/dAY%2009.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item vid"><video src="Videos/Day%2029.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item vid"><video src="Videos/Low%20Quality%20Reel%20v3.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item vid"><video src="Videos/Test%20Task%201%20v6.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<div class="item vid"><video src="Videos/Video.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
 </div></section>
-<div id="lb"><img alt=""></div>
+
+<div id="lb">
+  <button id="x" aria-label="Close">&times;</button>
+  <div id="stage">
+    <img id="main" alt="">
+    <video id="ref" playsinline preload="auto"></video>
+    <video id="mv" controls playsinline></video>
+  </div>
+  <div id="cap"></div>
+</div>
+
+<div id="pv">
+  <div id="pvbar"><span class="t" id="pvt"></span><a id="pvo" target="_blank" rel="noopener">Open in new tab</a><button id="pvx">Close</button></div>
+  <div id="pvnote"></div>
+  <div id="pvbody"></div>
+</div>
+
 <script>
-const lb=document.getElementById('lb'),li=lb.querySelector('img');
-document.querySelectorAll('.item img').forEach(i=>i.addEventListener('click',()=>{li.src=i.src;lb.style.display='flex'}));
-lb.addEventListener('click',()=>{lb.style.display='none';li.src=''});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.click()});
+var DATA=[{"t":"vid","u":"AI%20%2B%20Design/01.mp4","x":"","n":"01.mp4"},{"t":"pdf","u":"AI%20%2B%20Design/Film%20Facilitation%20Centre%20Design%20Sheets.pdf","x":"","n":"Film Facilitation Centre Design Sheets.pdf"},{"t":"img","u":"AI%20%2B%20Design/Gemini_Generated_Image_4kwkth4kwkth4kwk.png","x":"","v":"","n":"Gemini_Generated_Image_4kwkth4kwkth4kwk.png"},{"t":"img","u":"AI%20%2B%20Design/Gemini_Generated_Image_85bh8985bh8985bh.png","x":"","v":"","n":"Gemini_Generated_Image_85bh8985bh8985bh.png"},{"t":"img","u":"AI%20%2B%20Design/Scio.png","x":"","v":"","n":"Scio.png"},{"t":"img","u":"Images/2.png","x":"","v":"","n":"2.png"},{"t":"img","u":"Images/6.png","x":"","v":"","n":"6.png"},{"t":"img","u":"Images/corrected%20intach%20poster%2016%20%3B%2044.jpg","x":"","v":"","n":"corrected intach poster 16 ; 44.jpg"},{"t":"img","u":"Images/dAaY%2004.png","x":"","v":"","n":"dAaY 04.png"},{"t":"img","u":"Images/Day%2004.png","x":"","v":"","n":"Day 04.png"},{"t":"img","u":"Images/Page%205.1%20(3).jpg","x":"","v":"","n":"Page 5.1 (3).jpg"},{"t":"vid","u":"Images/Pallavan%20Post%20001.mp4","x":"","n":"Pallavan Post 001.mp4"},{"t":"img","u":"Images/PG%204.png","x":"","v":"","n":"PG 4.png"},{"t":"img","u":"Images/PG%205.png","x":"","v":"","n":"PG 5.png"},{"t":"vid","u":"Images/QR%20Post.mp4","x":"","n":"QR Post.mp4"},{"t":"img","u":"Images/streak%20street.jpg","x":"","v":"","n":"streak street.jpg"},{"t":"vid","u":"Videos/2D%20Animation%20Promo.mp4","x":"","n":"2D Animation Promo.mp4"},{"t":"vid","u":"Videos/Anamorphic%20Single%20Screen.mp4","x":"","n":"Anamorphic Single Screen.mp4"},{"t":"vid","u":"Videos/Chemical%20Guys%20Task%203%20v1.mp4","x":"","n":"Chemical Guys Task 3 v1.mp4"},{"t":"vid","u":"Videos/dAY%2009.mp4","x":"","n":"dAY 09.mp4"},{"t":"vid","u":"Videos/Day%2029.mp4","x":"","n":"Day 29.mp4"},{"t":"vid","u":"Videos/Low%20Quality%20Reel%20v3.mp4","x":"","n":"Low Quality Reel v3.mp4"},{"t":"vid","u":"Videos/Test%20Task%201%20v6.mp4","x":"","n":"Test Task 1 v6.mp4"},{"t":"vid","u":"Videos/Video.mp4","x":"","n":"Video.mp4"}];
+var TEXT_MS=3000;
+var PDFJS='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+var PDFW='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+var $=function(id){return document.getElementById(id)};
+var lb=$('lb'),main=$('main'),ref=$('ref'),mv=$('mv'),cap=$('cap');
+var pv=$('pv'),pvbody=$('pvbody'),pvnote=$('pvnote');
+var timers=[],pvToken=0;
+
+function clearT(){timers.forEach(clearTimeout);timers=[]}
+
+function closeLb(){
+  clearT();
+  ref.pause();ref.removeAttribute('src');ref.load();ref.style.opacity=0;
+  mv.pause();mv.removeAttribute('src');mv.load();
+  main.removeAttribute('src');
+  lb.style.display='none';lb.className='';
+  document.body.style.overflow='';
+}
+
+function openMedia(it){
+  clearT();
+  lb.style.display='flex';
+  lb.className=it.x?'hascap':'';
+  cap.textContent=it.x||'';
+  document.body.style.overflow='hidden';
+  ref.style.opacity=0;
+  if(it.t==='vid'){
+    main.style.display='none';ref.style.display='none';mv.style.display='block';
+    mv.src=it.u;
+    var p=mv.play();if(p&&p.catch)p.catch(function(){});
+    return;
+  }
+  mv.style.display='none';main.style.display='block';ref.style.display='block';
+  main.src=it.u;
+  if(it.v){
+    ref.muted=false;
+    ref.src=it.v;
+    timers.push(setTimeout(function(){
+      ref.currentTime=0;
+      var p=ref.play();
+      if(p&&p.catch)p.catch(function(){ref.muted=true;ref.play().catch(function(){})});
+    },TEXT_MS));
+  }
+}
+ref.addEventListener('playing',function(){ref.style.opacity=1});
+ref.addEventListener('timeupdate',function(){
+  if(ref.duration&&ref.duration-ref.currentTime<=2)ref.style.opacity=0;
+});
+ref.addEventListener('ended',function(){ref.style.opacity=0});
+
+lb.addEventListener('click',function(e){if(e.target===lb)closeLb()});
+$('x').addEventListener('click',closeLb);
+
+// ---- pdf ----
+function loadPdfJs(cb){
+  if(window.pdfjsLib)return cb();
+  var s=document.createElement('script');s.src=PDFJS;
+  s.onload=function(){pdfjsLib.GlobalWorkerOptions.workerSrc=PDFW;cb()};
+  s.onerror=function(){cb(true)};
+  document.head.appendChild(s);
+}
+
+function closePv(){
+  pvToken++;pv.style.display='none';pvbody.innerHTML='';
+  document.body.style.overflow='';
+}
+
+function openPdf(it){
+  var token=++pvToken;
+  pv.style.display='flex';document.body.style.overflow='hidden';
+  $('pvt').textContent=it.n;
+  $('pvo').href=it.u;
+  pvnote.style.display=it.x?'block':'none';pvnote.textContent=it.x||'';
+  pvbody.innerHTML='<div id="pvmsg">Loading...</div>';
+  function fallback(){pvbody.innerHTML='<iframe src="'+it.u+'"></iframe>'}
+  loadPdfJs(function(err){
+    if(err)return fallback();
+    pdfjsLib.getDocument(it.u).promise.then(function(doc){
+      if(token!==pvToken)return;
+      pvbody.innerHTML='';
+      var dpr=window.devicePixelRatio||1;
+      (function next(n){
+        if(n>doc.numPages||token!==pvToken)return;
+        doc.getPage(n).then(function(page){
+          if(token!==pvToken)return;
+          var w=Math.min(pvbody.clientWidth-16,1100);
+          var sc=w/page.getViewport({scale:1}).width;
+          var vp=page.getViewport({scale:sc*dpr});
+          var c=document.createElement('canvas');
+          c.width=vp.width;c.height=vp.height;
+          c.style.width=w+'px';c.style.height=(vp.height/dpr)+'px';
+          pvbody.appendChild(c);
+          page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise.then(function(){next(n+1)});
+        });
+      })(1);
+    }).catch(function(){if(token===pvToken)fallback()});
+  });
+}
+$('pvx').addEventListener('click',closePv);
+
+// first-page thumbnails for PDF tiles
+(function(){
+  var tiles=document.querySelectorAll('.item.pdf');
+  if(!tiles.length)return;
+  loadPdfJs(function(err){
+    if(err)return;
+    tiles.forEach(function(t){
+      pdfjsLib.getDocument(t.getAttribute('data-src')).promise
+        .then(function(d){return d.getPage(1)})
+        .then(function(page){
+          var h=260,dpr=window.devicePixelRatio||1;
+          var sc=h/page.getViewport({scale:1}).height;
+          var vp=page.getViewport({scale:sc*dpr});
+          var c=t.querySelector('canvas');
+          c.width=vp.width;c.height=vp.height;
+          c.style.height=h+'px';c.style.width=(vp.width/dpr)+'px';
+          return page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+        }).catch(function(){});
+    });
+  });
+})();
+
+// ---- clicks ----
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.exp');
+  if(b)return openMedia(DATA[+b.getAttribute('data-i')]);
+  var it=e.target.closest('.item[data-i]');
+  if(!it)return;
+  var d=DATA[+it.getAttribute('data-i')];
+  if(d.t==='pdf')openPdf(d);else openMedia(d);
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){if(pv.style.display==='flex')closePv();else if(lb.style.display==='flex')closeLb()}
+  if(e.key==='Enter'&&document.activeElement&&document.activeElement.classList.contains('pdf'))document.activeElement.click();
+});
 </script>
 </body></html>
