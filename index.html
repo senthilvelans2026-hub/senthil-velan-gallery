@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Senthil Velan Gallery</title>
 <style>
-:root{--bg:#fafafa;--fg:#111;--mut:#888}
+:root{--bg:#fafafa;--fg:#111;--mut:#888;--line:#8883;--card:#8881}
 @media (prefers-color-scheme:dark){:root{--bg:#0e0e0e;--fg:#eee;--mut:#777}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
@@ -22,36 +22,59 @@ h2 span{color:var(--mut);font-size:.85rem;margin-left:6px}
 .item.pdf .lbl span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .exp{position:absolute;top:8px;right:8px;z-index:2;border:0;border-radius:6px;background:#000a;color:#fff;font-size:1rem;padding:4px 8px;cursor:pointer}
 
+/* about / profile */
+.about{padding:6px 24px 10px;max-width:1000px}
+.about .role{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-top:2px}
+.about .tag{margin:8px 0 10px;font-size:1.02rem}
+.about .contact{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.85rem;color:var(--mut)}
+.about .contact a{color:inherit}
+.about .sh{margin:22px 0 8px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:600;border-bottom:1px solid var(--line);padding-bottom:6px}
+.about p{margin:0 0 8px;line-height:1.6;font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.stat{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.stat b{font-size:1.15rem}.stat span{font-size:.75rem;color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 12px;font-size:.8rem}
+.entry{margin:12px 0 4px;padding-left:12px;border-left:2px solid var(--line)}
+.entry b{font-size:.95rem}
+.entry .em{font-size:.8rem;color:var(--mut);margin-top:2px;line-height:1.5}
+.about ul{margin:6px 0 10px;padding-left:34px}
+.about li{margin:0 0 5px;font-size:.9rem;line-height:1.55}
+
 /* lightbox */
 #lb{position:fixed;inset:0;background:#000e;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:9;padding:16px;gap:14px}
 #stage{position:relative;line-height:0;max-width:96vw}
 #main{display:block;max-width:96vw;max-height:92vh;object-fit:contain}
-#lb.hascap #main,#lb.hascap #mv{max-height:66vh}
+#lb.hascap #main,#lb.hascap #mv{max-height:62vh}
 #mv{display:none;max-width:96vw;max-height:92vh;background:#000}
 #ref{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;opacity:0;pointer-events:none;transition:opacity 2s ease}
-#cap{display:none;color:#eee;max-width:min(860px,94vw);max-height:22vh;overflow:auto;font-size:1rem;line-height:1.55;white-space:pre-wrap;text-align:center}
+#cap{display:none;color:#ddd;width:min(860px,94vw);max-height:26vh;overflow:auto;font-size:.98rem;line-height:1.55;text-align:left}
 #lb.hascap #cap{display:block}
+#cap h3,#pvnote h3{margin:0 0 6px;font-size:1.1rem;color:inherit}
+#cap p,#pvnote p{margin:0 0 6px}
+#cap b{color:#fff}
 #x{position:absolute;top:12px;right:14px;z-index:3;border:0;background:#fff2;color:#fff;border-radius:50%;width:38px;height:38px;font-size:1.3rem;cursor:pointer}
 
 /* pdf viewer */
 #pv{position:fixed;inset:0;display:none;flex-direction:column;background:var(--bg);z-index:10}
-#pvbar{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #8883;font-size:.9rem}
+#pvbar{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);font-size:.9rem}
 #pvbar .t{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
 #pvbar a{color:inherit;opacity:.7;font-size:.85rem}
 #pvbar button{border:0;background:#8883;color:inherit;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:.9rem}
-#pvnote{flex:0 0 auto;padding:8px 16px;font-size:.9rem;white-space:pre-wrap;border-bottom:1px solid #8883;display:none;max-height:20vh;overflow:auto}
+#pvnote{flex:0 0 auto;padding:10px 16px;font-size:.9rem;border-bottom:1px solid var(--line);display:none;max-height:22vh;overflow:auto}
 #pvbody{flex:1 1 auto;overflow:auto;-webkit-overflow-scrolling:touch;padding:8px;background:#8881;text-align:center}
 #pvbody canvas{display:block;margin:0 auto 10px;background:#fff;box-shadow:0 1px 6px #0004}
 #pvbody iframe{width:100%;height:100%;border:0}
 #pvmsg{padding:30px;color:var(--mut)}
 </style></head><body>
-<header>Senthil Velan Gallery</header>
+<header>Senthil Velan</header>
+<div class="about"><div class="role">Senior Creative Generalist &amp; Content Director</div><p class="tag">Bridging Spatial Design, Motion Graphics, and AI-Driven Content Workflows</p><div class="contact"><span>Chennai, Tamil Nadu, India</span><a href="mailto:senthilvelans2019@gmail.com">senthilvelans2019@gmail.com</a><a href="tel:+919791448050">+91 9791448050</a><a href="https://631ed8dc1ea94.site123.me" target="_blank" rel="noopener">631ed8dc1ea94.site123.me</a></div><h3 class="sh">Stats</h3><div class="stats"><div class="stat"><b>8+ Years</b><span>Industry Leadership</span></div><div class="stat"><b>GenAI Pipelines</b><span>Kling / Veo / SD</span></div><div class="stat"><b>B.Arch</b><span>Spatial Architecture</span></div><div class="stat"><b>YouTube Lead</b><span>Full Lifecycle Ops</span></div></div><h3 class="sh">Professional Summary</h3><p>Senior Creative Generalist and Content Director with over 8 years of experience bridging spatial design, cinematic storytelling, and emerging technologies. Expert in managing full-cycle digital media production, leading creative teams, and implementing advanced AI-driven creative workflows.</p><p>Proven track record of scaling high-traffic YouTube channels, consulting for hardware/software tech startups, and delivering diverse content formats - from high-impact advertising campaigns to immersive AR/VR spatial environments.</p><h3 class="sh">Core Competencies</h3><div class="entry"><b>Production Leadership</b><div class="em">End-to-end campaign management, cross-disciplinary team leadership, script-to-screen direction, and strategic resource allocation.</div></div><div class="entry"><b>Traditional &amp; AI Workflows</b><div class="em">Advanced mastery of Adobe Creative Suite (After Effects, Premiere, Photoshop), Blender, and cutting-edge GenAI suites (Gemini, Stable Diffusion, Kling, Veo).</div></div><div class="entry"><b>Multidisciplinary Design</b><div class="em">3D motion graphics, VFX compositing, character animation, spatial visualization, interactive UI/UX, and immersive AR/VR design.</div></div><h3 class="sh">Toolkit &amp; Platforms</h3><div class="chips"><span>Blender</span><span>After Effects</span><span>Premiere Pro</span><span>Photoshop</span><span>Python (Automation Scripts)</span><span>Stable Diffusion</span><span>GenAI Pipelines</span><span>Kling AI</span><span>Google Veo &amp; Gemini</span></div><h3 class="sh">Professional Experience</h3><div class="entry"><b>Sr. Motion Graphics Designer</b><div class="em">Jan 2026 - Present · Mf media, Chennai, India</div><ul><li>Pioneer Next-Gen Workflows: Driving the integration of AI-driven video production pipelines, optimizing turnaround times for complex visual effects and high-volume motion graphics.</li><li>Delivering high-end motion design assets tailored for multi-platform digital distribution and brand identity campaigns.</li></ul></div><div class="entry"><b>Design Consultant</b><div class="em">Jan 2025 - May 2025 · IIT Pravartak / IIT Madras, Chennai, India</div><ul><li>Strategic Advisory: Embedded within incubation hubs to guide hardware and software startups on visual identity, spatial UI/UX, and technical content strategy.</li><li>Translated complex deep-tech and engineering concepts into marketable digital assets, interactive pitch presentations, and investor materials.</li></ul></div><div class="entry"><b>Sr. Motion Graphics Designer</b><div class="em">Jan 2024 - Dec 2024 · RTT Digital Media, Chennai, India</div><ul><li>Brand Scaling: Spearheaded high-volume visual content creation for digital advertising campaigns and corporate communication channels.</li><li>Mentored junior graphic designers and motion artists to maintain rigorous aesthetic consistency and execution speed.</li></ul></div><div class="entry"><b>2D / 3D Designer</b><div class="em">Jan 2023 - Jan 2024 · Pixent Interactive, Germany (Remote)</div><ul><li>Immersive Media: Architected assets for interactive applications, specializing in 360-degree environments, AR/VR scenes, and user interfaces.</li><li>Bridged architectural spatial principles with real-time 3D rendering to construct optimized 3D assets for engine integration.</li></ul></div><div class="entry"><b>Lead Content Creator / Motion Graphics</b><div class="em">Dec 2018 - Dec 2022 · Mishri Movies, Chennai, India</div><ul><li>Production Management: Directed the complete production lifecycle for high-traffic YouTube channels, directly managing a team of editors and animators.</li><li>Script-to-Screen Execution: Maintained absolute creative control over visual storytelling, character design, asset animation, voice integration, and final post-production.</li></ul></div><h3 class="sh">Education &amp; Academic Foundation</h3><div class="entry"><b>Bachelor of Architecture (B.Arch.)</b><div class="em">2017 - 2022 · MEASI Academy of Architecture, Chennai</div></div></div>
 <section><h2>AI + Design <span>5</span></h2><div class="row">
-<div class="item vid"><video src="AI%20%2B%20Design/01.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item pdf" data-i="1" data-src="AI%20%2B%20Design/Film%20Facilitation%20Centre%20Design%20Sheets.pdf" tabindex="0"><canvas></canvas><div class="lbl"><b>PDF</b><span>Film Facilitation Centre Design Sheets.pdf</span></div></div>
-<div class="item" data-i="2"><img src="AI%20%2B%20Design/Gemini_Generated_Image_4kwkth4kwkth4kwk.png" loading="lazy" alt="Gemini_Generated_Image_4kwkth4kwkth4kwk.png"></div>
-<div class="item" data-i="3"><img src="AI%20%2B%20Design/Gemini_Generated_Image_85bh8985bh8985bh.png" loading="lazy" alt="Gemini_Generated_Image_85bh8985bh8985bh.png"></div>
-<div class="item" data-i="4"><img src="AI%20%2B%20Design/Scio.png" loading="lazy" alt="Scio.png"></div>
+<div class="item pdf" data-i="0" data-src="AI%20%2B%20Design/Film%20Facilitation%20Centre%20Design%20Sheets.pdf" tabindex="0"><canvas></canvas><div class="lbl"><b>PDF</b><span>Film Facilitation Centre Design Sheets.pdf</span></div></div>
+<div class="item" data-i="1"><img src="AI%20%2B%20Design/Gemini_Generated_Image_4kwkth4kwkth4kwk.png" loading="lazy" alt="Gemini_Generated_Image_4kwkth4kwkth4kwk.png"></div>
+<div class="item" data-i="2"><img src="AI%20%2B%20Design/Gemini_Generated_Image_85bh8985bh8985bh.png" loading="lazy" alt="Gemini_Generated_Image_85bh8985bh8985bh.png"></div>
+<div class="item" data-i="3"><img src="AI%20%2B%20Design/Scio.png" loading="lazy" alt="Scio.png"></div>
+<div class="item pdf" data-i="4" data-src="AI%20%2B%20Design/Senthil%20Velan%20S%20Resume.pdf" tabindex="0"><canvas></canvas><div class="lbl"><b>PDF</b><span>Senthil Velan S Resume.pdf</span></div></div>
 </div></section>
 <section><h2>Images <span>11</span></h2><div class="row">
 <div class="item" data-i="5"><img src="Images/2.png" loading="lazy" alt="2.png"></div>
@@ -66,14 +89,11 @@ h2 span{color:var(--mut);font-size:.85rem;margin-left:6px}
 <div class="item vid"><video src="Images/QR%20Post.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
 <div class="item" data-i="15"><img src="Images/streak%20street.jpg" loading="lazy" alt="streak street.jpg"></div>
 </div></section>
-<section><h2>Videos <span>8</span></h2><div class="row">
-<div class="item vid"><video src="Videos/2D%20Animation%20Promo.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
+<section><h2>Videos <span>5</span></h2><div class="row">
 <div class="item vid"><video src="Videos/Anamorphic%20Single%20Screen.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
 <div class="item vid"><video src="Videos/Chemical%20Guys%20Task%203%20v1.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
 <div class="item vid"><video src="Videos/dAY%2009.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
 <div class="item vid"><video src="Videos/Day%2029.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item vid"><video src="Videos/Low%20Quality%20Reel%20v3.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
-<div class="item vid"><video src="Videos/Test%20Task%201%20v6.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
 <div class="item vid"><video src="Videos/Video.mp4#t=0.1" controls preload="metadata" playsinline></video></div>
 </div></section>
 
@@ -94,7 +114,7 @@ h2 span{color:var(--mut);font-size:.85rem;margin-left:6px}
 </div>
 
 <script>
-var DATA=[{"t":"vid","u":"AI%20%2B%20Design/01.mp4","x":"","n":"01.mp4"},{"t":"pdf","u":"AI%20%2B%20Design/Film%20Facilitation%20Centre%20Design%20Sheets.pdf","x":"","n":"Film Facilitation Centre Design Sheets.pdf"},{"t":"img","u":"AI%20%2B%20Design/Gemini_Generated_Image_4kwkth4kwkth4kwk.png","x":"","v":"","n":"Gemini_Generated_Image_4kwkth4kwkth4kwk.png"},{"t":"img","u":"AI%20%2B%20Design/Gemini_Generated_Image_85bh8985bh8985bh.png","x":"","v":"","n":"Gemini_Generated_Image_85bh8985bh8985bh.png"},{"t":"img","u":"AI%20%2B%20Design/Scio.png","x":"","v":"","n":"Scio.png"},{"t":"img","u":"Images/2.png","x":"","v":"","n":"2.png"},{"t":"img","u":"Images/6.png","x":"","v":"","n":"6.png"},{"t":"img","u":"Images/corrected%20intach%20poster%2016%20%3B%2044.jpg","x":"","v":"","n":"corrected intach poster 16 ; 44.jpg"},{"t":"img","u":"Images/dAaY%2004.png","x":"","v":"","n":"dAaY 04.png"},{"t":"img","u":"Images/Day%2004.png","x":"","v":"","n":"Day 04.png"},{"t":"img","u":"Images/Page%205.1%20(3).jpg","x":"","v":"","n":"Page 5.1 (3).jpg"},{"t":"vid","u":"Images/Pallavan%20Post%20001.mp4","x":"","n":"Pallavan Post 001.mp4"},{"t":"img","u":"Images/PG%204.png","x":"","v":"","n":"PG 4.png"},{"t":"img","u":"Images/PG%205.png","x":"","v":"","n":"PG 5.png"},{"t":"vid","u":"Images/QR%20Post.mp4","x":"","n":"QR Post.mp4"},{"t":"img","u":"Images/streak%20street.jpg","x":"","v":"","n":"streak street.jpg"},{"t":"vid","u":"Videos/2D%20Animation%20Promo.mp4","x":"","n":"2D Animation Promo.mp4"},{"t":"vid","u":"Videos/Anamorphic%20Single%20Screen.mp4","x":"","n":"Anamorphic Single Screen.mp4"},{"t":"vid","u":"Videos/Chemical%20Guys%20Task%203%20v1.mp4","x":"","n":"Chemical Guys Task 3 v1.mp4"},{"t":"vid","u":"Videos/dAY%2009.mp4","x":"","n":"dAY 09.mp4"},{"t":"vid","u":"Videos/Day%2029.mp4","x":"","n":"Day 29.mp4"},{"t":"vid","u":"Videos/Low%20Quality%20Reel%20v3.mp4","x":"","n":"Low Quality Reel v3.mp4"},{"t":"vid","u":"Videos/Test%20Task%201%20v6.mp4","x":"","n":"Test Task 1 v6.mp4"},{"t":"vid","u":"Videos/Video.mp4","x":"","n":"Video.mp4"}];
+var DATA=[{"t":"pdf","u":"AI%20%2B%20Design/Film%20Facilitation%20Centre%20Design%20Sheets.pdf","x":"","n":"Film Facilitation Centre Design Sheets.pdf"},{"t":"img","u":"AI%20%2B%20Design/Gemini_Generated_Image_4kwkth4kwkth4kwk.png","x":"","v":"","n":"Gemini_Generated_Image_4kwkth4kwkth4kwk.png"},{"t":"img","u":"AI%20%2B%20Design/Gemini_Generated_Image_85bh8985bh8985bh.png","x":"","v":"","n":"Gemini_Generated_Image_85bh8985bh8985bh.png"},{"t":"img","u":"AI%20%2B%20Design/Scio.png","x":"\u003ch3>Computational Psyography: Generative Light Imprinting\u003c/h3>\u003cp>An experimental blend of AI, creative coding, and 3D design. Uses a custom Blender Python script to calculate light-ray paths and perforate lamp geometry, projecting personalized portraits onto walls - fabricated as a 3D-printed foyer fixture.\u003c/p>\u003cp>\u003cb>AI Masking:\u003c/b> Extracted high-contrast target profiles.\u003c/p>\u003cp>\u003cb>Algorithmic Ray-Casting:\u003c/b> Automated mesh perforation in Blender.\u003c/p>\u003cp>\u003cb>3D Fabrication:\u003c/b> Built for a home foyer installation.\u003c/p>","v":"AI%20%2B%20Design/01.mp4","n":"Scio.png"},{"t":"pdf","u":"AI%20%2B%20Design/Senthil%20Velan%20S%20Resume.pdf","x":"","n":"Senthil Velan S Resume.pdf"},{"t":"img","u":"Images/2.png","x":"","v":"","n":"2.png"},{"t":"img","u":"Images/6.png","x":"","v":"","n":"6.png"},{"t":"img","u":"Images/corrected%20intach%20poster%2016%20%3B%2044.jpg","x":"","v":"","n":"corrected intach poster 16 ; 44.jpg"},{"t":"img","u":"Images/dAaY%2004.png","x":"","v":"","n":"dAaY 04.png"},{"t":"img","u":"Images/Day%2004.png","x":"","v":"","n":"Day 04.png"},{"t":"img","u":"Images/Page%205.1%20(3).jpg","x":"","v":"","n":"Page 5.1 (3).jpg"},{"t":"vid","u":"Images/Pallavan%20Post%20001.mp4","x":"","n":"Pallavan Post 001.mp4"},{"t":"img","u":"Images/PG%204.png","x":"","v":"","n":"PG 4.png"},{"t":"img","u":"Images/PG%205.png","x":"","v":"","n":"PG 5.png"},{"t":"vid","u":"Images/QR%20Post.mp4","x":"","n":"QR Post.mp4"},{"t":"img","u":"Images/streak%20street.jpg","x":"","v":"","n":"streak street.jpg"},{"t":"vid","u":"Videos/Anamorphic%20Single%20Screen.mp4","x":"","n":"Anamorphic Single Screen.mp4"},{"t":"vid","u":"Videos/Chemical%20Guys%20Task%203%20v1.mp4","x":"","n":"Chemical Guys Task 3 v1.mp4"},{"t":"vid","u":"Videos/dAY%2009.mp4","x":"","n":"dAY 09.mp4"},{"t":"vid","u":"Videos/Day%2029.mp4","x":"","n":"Day 29.mp4"},{"t":"vid","u":"Videos/Video.mp4","x":"","n":"Video.mp4"}];
 var TEXT_MS=3000;
 var PDFJS='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
 var PDFW='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -118,7 +138,8 @@ function openMedia(it){
   clearT();
   lb.style.display='flex';
   lb.className=it.x?'hascap':'';
-  cap.textContent=it.x||'';
+  cap.innerHTML=it.x||'';
+  cap.scrollTop=0;
   document.body.style.overflow='hidden';
   ref.style.opacity=0;
   if(it.t==='vid'){
@@ -130,6 +151,7 @@ function openMedia(it){
   mv.style.display='none';main.style.display='block';ref.style.display='block';
   main.src=it.u;
   if(it.v){
+    // linked video: stays hidden until TEXT_MS has passed, then fades in and plays
     ref.muted=false;
     ref.src=it.v;
     timers.push(setTimeout(function(){
@@ -167,7 +189,7 @@ function openPdf(it){
   pv.style.display='flex';document.body.style.overflow='hidden';
   $('pvt').textContent=it.n;
   $('pvo').href=it.u;
-  pvnote.style.display=it.x?'block':'none';pvnote.textContent=it.x||'';
+  pvnote.style.display=it.x?'block':'none';pvnote.innerHTML=it.x||'';
   pvbody.innerHTML='<div id="pvmsg">Loading...</div>';
   function fallback(){pvbody.innerHTML='<iframe src="'+it.u+'"></iframe>'}
   loadPdfJs(function(err){
